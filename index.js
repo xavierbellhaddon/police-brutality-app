@@ -43,14 +43,34 @@ req.onload = function () {
       properties: incident,
       geometry: {
           type: 'Point',
-          coordinates: [long, lat]
+          coordinates: [lat, long]
       }
     };
 
     features.push(feature)
 
   })
+
+  console.log(features.length)
+
+  features.forEach(feature => {
+      const lat = feature.geometry.coordinates[0];
+      const long = feature.geometry.coordinates[1];
+
+    //   var marker = L.marker([lat, long]).addTo(map);
+
+      const circle = L.circle([lat, long], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(map);
+
+  })
 };
 
-console.log(features)
+
+
+
+
 
