@@ -55,18 +55,26 @@ function visualize() {
 
 function handleSearch(searchTerm) {
   let url =
-    "https://api.846policebrutality.com/api/incidents?filter[state]=" +
+    "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
     searchTerm.split(" ").join("+");
   const req = new XMLHttpRequest();
   req.open("GET", url);
   req.send();
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
-    console.log(data);
     data.forEach((incident) => {
       const el = document.createElement("div");
+
+      let evidence = "";
+
+      for (let i = 0; i < incident.evidence.length; i++) {
+        evidence += `<p>${incident.evidence[i].url}</p>`;
+      }
+
+
       el.innerHTML = `
       <h2>${incident.title}</h2>
+      ${evidence}
       <p>${incident.date}</p>
       `;
       searchResults.appendChild(el);
