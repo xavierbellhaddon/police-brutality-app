@@ -2,6 +2,19 @@
     box-sizing: border-box;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #191a1a;
+    opacity: 1; 
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #191a1a;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #191a1a;
+  }
+
 h1, h2, h3 {
     font-family: 'Helvetica', sans-serif;
 }
@@ -13,11 +26,34 @@ h2, h3 {
 
 form {
     margin-top: 1.5em;
+    display: flex;
+    height: 40px;
 }
 
 #map {
     margin: 1em 0; 
     height: 550px;
+    border-radius: 5px;
+}
+
+.fa-search {
+    color: white;
+}
+
+.text-input {
+    padding: 1em;
+    color: #191a1a;
+    background-color: lightgray;
+    border: none;
+    border-radius: 5px;
+}
+
+.submit {
+    margin-left: 0.5em;
+    width: 40px;
+    background-color: #191a1a;
+    border: none;
+    border-radius: 5px;
 }
 
 .incident {
