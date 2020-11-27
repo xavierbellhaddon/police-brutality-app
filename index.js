@@ -69,6 +69,8 @@ function handleSearch(searchTerm) {
 
       let evidence = "";
 
+      el.classList.add("incident")
+
       // const streams = incident.evidence[0].video[0].streams;
 
       // // for (let i = 0; i < incident.evidence.length; i++) {

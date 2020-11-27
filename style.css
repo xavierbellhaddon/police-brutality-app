@@ -2,6 +2,15 @@
     box-sizing: border-box;
 }
 
+h1, h2, h3 {
+    font-family: 'Helvetica', sans-serif;
+}
+
+h2, h3 {
+    margin: 0;
+    color: white;
+}
+
 form {
     margin-top: 1.5em;
 }
@@ -9,5 +18,13 @@ form {
 #map {
     margin: 1em 0; 
     height: 550px;
+}
+
+.incident {
+    margin: 1em 0;
+    padding: 2em;
+    background-color: #191a1a;
+    border-radius: 5px;
+    width: 500px;
 }
 
