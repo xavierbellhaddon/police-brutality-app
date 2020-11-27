@@ -16,7 +16,7 @@
 }
 
 html {
-    background-color: lightgray;
+  background-color: #0a0a0a;
 }
 
 h1,
@@ -28,24 +28,20 @@ h3 {
 h2,
 h3 {
   margin: 0;
-  /* color: white; */
   color: white;
 }
 
 form {
-  /* margin-top: 1.5em; */
   display: flex;
   height: 40px;
 }
 
 #map {
-  /* height: 550px; */
-  height: 100%;
-  /* border-radius: 5px; */
+  height: 100vh;
   position: absolute;
   left: 0;
   right: 0;
-  /* top: 104px; */
+  top: 104px;
   z-index: 0;
 }
 
@@ -54,21 +50,16 @@ form {
 }
 
 .search {
-    /* margin-top: 1em; */
-    margin-bottom: 1em; 
-    padding: 2em;
-    /* background-color: #191a1a; */
-    background-color: #0a0a0a;
-    /* border-radius: 5px; */
-    /* width: min-content; */
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    /* top: 550px; */
-    display: flex;
-    flex-flow: column
+  margin-bottom: 1em;
+  padding: 2em;
+  background-color: #0a0a0a;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-flow: column;
 }
 
 .text-input {
@@ -82,29 +73,31 @@ form {
 .submit {
   margin-left: 0.5em;
   width: 40px;
-  /* background-color: #191a1a; */
   background-color: #343332;
   border: none;
   border-radius: 5px;
 }
 
 .search-results {
-    background-color: gray;
-    position: absolute;
-    left: 0;
-    /* top: 0; */
-    top: 104px;
-    height: 100vh;
-    overflow-y: auto;
-    /* border-right: 3px solid #0a0a0a; */
+  background-color: #343332;
+  border-right: 1px solid #5e5e5e;
+  position: absolute;
+  left: 0;
+  top: 104px;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .incident {
-  /* margin-top: 1em; */
-  margin: 1px 0;
+  margin-bottom: 5px;
   padding: 2em;
   background-color: #0a0a0a;
-  /* background-color: #343332; */
-  /* border-radius: 5px; */
+  border-top: 1px solid #5e5e5e;
+  border-bottom: 1px solid #5e5e5e;
   width: 500px;
 }
+
+.incident:last-child {
+    margin: 0;
+}
+

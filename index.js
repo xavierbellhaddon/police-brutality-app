@@ -4,8 +4,7 @@ const map = L.map("map", {
   zoomControl: false,
   scrollWheelZoom: false,
   attributionControl: false
-// }).setView([37.0902, -95.7129], 4);
-}).setView([40.0000, -96.0000], 4);
+}).setView([37.0902, -95.7129], 4);
 const searchResults = document.querySelector(".search-results");
 const style = {
   color: "white",
