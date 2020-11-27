@@ -39,7 +39,8 @@ form {
 }
 
 #map {
-  height: 550px;
+  /* height: 550px; */
+  height: 100%;
   /* border-radius: 5px; */
   position: absolute;
   left: 0;
@@ -85,10 +86,19 @@ form {
   border-radius: 5px;
 }
 
+.search-results {
+    background-color: gray;
+    position: absolute;
+    left: 0;
+    top: 104px;
+}
+
 .incident {
-  margin-top: 1em;
+  /* margin-top: 1em; */
+  margin-top: 1px;
   padding: 2em;
-  background-color: #343332;
-  border-radius: 5px;
+  background-color: black;
+  /* background-color: #343332; */
+  /* border-radius: 5px; */
   width: 500px;
 }
