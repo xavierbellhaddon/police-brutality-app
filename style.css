@@ -1,66 +1,94 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #191a1a;
-    opacity: 1; 
-  }
-  
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #191a1a;
-  }
-  
-  ::-ms-input-placeholder { /* Microsoft Edge */
-    color: #191a1a;
-  }
-
-h1, h2, h3 {
-    font-family: 'Helvetica', sans-serif;
+::placeholder {
+  color: #191a1a;
+  opacity: 1;
 }
 
-h2, h3 {
-    margin: 0;
-    color: white;
+:-ms-input-placeholder {
+  color: #191a1a;
+}
+
+::-ms-input-placeholder {
+  color: #191a1a;
+}
+
+html {
+    background-color: lightgray;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Helvetica", sans-serif;
+}
+
+h2,
+h3 {
+  margin: 0;
+  /* color: white; */
+  color: white;
 }
 
 form {
-    margin-top: 1.5em;
-    display: flex;
-    height: 40px;
+  /* margin-top: 1.5em; */
+  display: flex;
+  height: 40px;
 }
 
 #map {
-    margin: 1em 0; 
-    height: 550px;
-    border-radius: 5px;
+  height: 550px;
+  /* border-radius: 5px; */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 104px;
+  z-index: 0;
 }
 
 .fa-search {
-    color: white;
+  color: white;
+}
+
+.search {
+    /* margin-top: 1em; */
+    margin-bottom: 1em; 
+    padding: 2em;
+    /* background-color: #191a1a; */
+    background-color: black;
+    /* border-radius: 5px; */
+    /* width: min-content; */
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    /* top: 550px; */
 }
 
 .text-input {
-    padding: 1em;
-    color: #191a1a;
-    background-color: lightgray;
-    border: none;
-    border-radius: 5px;
+  padding: 1em;
+  color: #191a1a;
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
 }
 
 .submit {
-    margin-left: 0.5em;
-    width: 40px;
-    background-color: #191a1a;
-    border: none;
-    border-radius: 5px;
+  margin-left: 0.5em;
+  width: 40px;
+  /* background-color: #191a1a; */
+  background-color: #343332;
+  border: none;
+  border-radius: 5px;
 }
 
 .incident {
-    margin: 1em 0;
-    padding: 2em;
-    background-color: #191a1a;
-    border-radius: 5px;
-    width: 500px;
+  margin-top: 1em;
+  padding: 2em;
+  background-color: #343332;
+  border-radius: 5px;
+  width: 500px;
 }
-
