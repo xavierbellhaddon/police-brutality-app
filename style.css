@@ -45,7 +45,7 @@ form {
   position: absolute;
   left: 0;
   right: 0;
-  top: 104px;
+  /* top: 104px; */
   z-index: 0;
 }
 
@@ -58,7 +58,7 @@ form {
     margin-bottom: 1em; 
     padding: 2em;
     /* background-color: #191a1a; */
-    background-color: black;
+    background-color: #0a0a0a;
     /* border-radius: 5px; */
     /* width: min-content; */
     width: 100%;
@@ -67,6 +67,8 @@ form {
     top: 0;
     right: 0;
     /* top: 550px; */
+    display: flex;
+    flex-flow: column
 }
 
 .text-input {
@@ -90,14 +92,18 @@ form {
     background-color: gray;
     position: absolute;
     left: 0;
+    /* top: 0; */
     top: 104px;
+    height: 100vh;
+    overflow-y: auto;
+    /* border-right: 3px solid #0a0a0a; */
 }
 
 .incident {
   /* margin-top: 1em; */
-  margin-top: 1px;
+  margin: 1px 0;
   padding: 2em;
-  background-color: black;
+  background-color: #0a0a0a;
   /* background-color: #343332; */
   /* border-radius: 5px; */
   width: 500px;

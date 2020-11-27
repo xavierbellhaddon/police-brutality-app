@@ -1,8 +1,11 @@
 const form = document.querySelector("form");
 const textInput = document.querySelector(".text-input");
 const map = L.map("map", {
+  zoomControl: false,
   scrollWheelZoom: false,
-}).setView([37.0902, -95.7129], 4);
+  attributionControl: false
+// }).setView([37.0902, -95.7129], 4);
+}).setView([40.0000, -96.0000], 4);
 const searchResults = document.querySelector(".search-results");
 const style = {
   color: "white",
@@ -13,6 +16,10 @@ const style = {
   fillOpacity: 0.65,
 };
 const accessToken = "pk.eyJ1IjoieGF2aWVyYmVsbGhhZGRvbiIsImEiOiJja2h0dWJzd3owMnV0MnJydmI5dXp1MjJrIn0.XsZhwZnA3zq2_SZZ5TF1RA";
+
+L.control.zoom({
+  position: 'bottomright'
+}).addTo(map);
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
@@ -96,4 +103,8 @@ visualize();
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   handleSearch(textInput.value);
+});
+
+map.on('moveend', function() { 
+  console.log(map.getBounds());
 });
