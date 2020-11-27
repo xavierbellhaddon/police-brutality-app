@@ -1,9 +1,9 @@
 const form = document.querySelector("form");
-const textInput = document.querySelector("#text-input");
+const textInput = document.querySelector(".text-input");
 const map = L.map("map", {
   scrollWheelZoom: false,
 }).setView([37.0902, -95.7129], 4);
-const searchResults = document.querySelector("#search-results");
+const searchResults = document.querySelector(".search-results");
 const style = {
   color: "white",
   fillColor: "black",
@@ -54,6 +54,7 @@ function visualize() {
 }
 
 function handleSearch(searchTerm) {
+  searchResults.innerHTML = "";
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
     searchTerm.split(" ").join("+");
@@ -64,18 +65,24 @@ function handleSearch(searchTerm) {
     const data = JSON.parse(req.responseText).data;
     data.forEach((incident) => {
       const el = document.createElement("div");
+      const date = new Date(incident.date)
 
       let evidence = "";
 
-      for (let i = 0; i < incident.evidence.length; i++) {
-        evidence += `<p>${incident.evidence[i].url}</p>`;
-      }
+      // const streams = incident.evidence[0].video[0].streams;
 
+      // // for (let i = 0; i < incident.evidence.length; i++) {
+      // //   evidence += `<p>${incident.evidence[i].url}</p>`;
+      // // }
+
+      // for (let i = 0; i < streams.length; i++) {
+      //   evidence += `<iframe width='560' height='315' src='${streams[i].url}' frameborder='0' allowfullscreen></iframe></iframe>`
+      // }
 
       el.innerHTML = `
       <h2>${incident.title}</h2>
+      <h3>${(date.getMonth()+1) + '/' + date.getDate() + "/" + date.getFullYear()} &#183 ${incident.city}, ${incident.state}</h3>
       ${evidence}
-      <p>${incident.date}</p>
       `;
       searchResults.appendChild(el);
     });
@@ -86,6 +93,5 @@ visualize();
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  searchResults.innerHTML = "";
   handleSearch(textInput.value);
 });
