@@ -85,6 +85,8 @@ function handleSearch(searchTerm) {
 
       let evidence = "";
 
+      searchResults.classList.add("open");
+
       el.classList.add("incident");
 
       // const streams = incident.evidence[0].video[0].streams;
@@ -118,5 +120,6 @@ form.addEventListener("submit", (event) => {
 
 exitButton.addEventListener("click", (event) => {
   event.preventDefault();
+  searchResults.classList.remove("open");
   searchResults.innerHTML = "";
 });

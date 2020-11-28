@@ -111,7 +111,7 @@ form {
     background-color: transparent;
 }
 
-.search-results {
+.search-results.open {
   background-color: #343332;
   border-right: 1px solid #5e5e5e;
   position: absolute;
