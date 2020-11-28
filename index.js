@@ -50,7 +50,7 @@ function visualize() {
   req.send();
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
-    const total = data.length.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    const total = data.length.toLocaleString()
     incidentNumber.innerHTML = `
     <h1>${total}</h1>
     <p>incidents countrywide</p>
