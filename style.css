@@ -25,11 +25,6 @@ h1,
 h2,
 h3 {
   font-family: "Helvetica", sans-serif;
-}
-
-h2,
-h3 {
-  margin: 0;
   color: white;
 }
 
@@ -38,19 +33,30 @@ form {
   height: 40px;
 }
 
+.header {
+  height: 104px;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #5e5e5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #map {
-  height: 100vh;
+  height: 600px;
   position: absolute;
   left: 0;
   right: 0;
   top: 104px;
   z-index: 0;
-  border-top: 1px solid #5e5e5e;
+  /* border-top: 1px solid #5e5e5e; */
+  border-bottom: 1px solid #5e5e5e;
 }
 
 .incident-number {
     background-color: #0a0a0a;
     position: absolute;
+    height: 106px;
     top: 104px;
     width: 300px;
     left: 0;
@@ -60,6 +66,7 @@ form {
     border-radius: 0 0 10px 10px;
     text-align: center;
     border: 1px solid #5e5e5e;
+    border-top: none;
     color: white;
     padding: 1em;
 }
@@ -77,16 +84,19 @@ form {
 }
 
 .search {
-  padding: 2em 1em;
-  width: 100%;
+  padding: 2em;
   position: absolute;
-  z-index: 1;
-  top: 0;
+  /* z-index: 1; */
+  /* top: 0; */
+  top: 104px;
   left: 0;
-  display: flex;
-  flex-flow: column;
+  /* display: flex;
+  flex-direction: column; */
   width: 500px;
+  /* border-top: 1px solid #5e5e5e; */
   border-bottom: 1px solid #5e5e5e;
+  border-right: 1px solid #5e5e5e;
+  background-color: #0a0a0a;
   
 }
 
@@ -117,17 +127,18 @@ form {
   position: absolute;
   left: 0;
   top: 105px;
-  height: 100vh;
+  height: 494px;
   overflow-y: auto;
+  width: 500px;
 }
 
 .incident {
+  margin-top: 5px;
   margin-bottom: 5px;
   padding: 2em;
   background-color: #0a0a0a;
   border-top: 1px solid #5e5e5e;
   border-bottom: 1px solid #5e5e5e;
-  width: 500px;
 }
 
 .incident:last-child {
@@ -135,6 +146,3 @@ form {
     border-bottom: none;
 }
 
-.incident:first-child {
-    border-top: none;
-}

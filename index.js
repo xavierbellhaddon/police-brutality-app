@@ -6,7 +6,7 @@ const map = L.map("map", {
   zoomControl: false,
   scrollWheelZoom: false,
   attributionControl: false,
-}).setView([37.0902, -95.7129], 4);
+}).setView([41.0000, -95.0000], 4);
 const searchResults = document.querySelector(".search-results");
 const style = {
   color: "white",
