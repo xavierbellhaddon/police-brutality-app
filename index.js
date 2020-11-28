@@ -1,10 +1,11 @@
-const incidentNumber = document.querySelector(".incident-number")
+const incidentNumber = document.querySelector(".incident-number");
 const form = document.querySelector("form");
+const exitButton = document.querySelector(".exit-button");
 const textInput = document.querySelector(".text-input");
 const map = L.map("map", {
   zoomControl: false,
   scrollWheelZoom: false,
-  attributionControl: false
+  attributionControl: false,
 }).setView([37.0902, -95.7129], 4);
 const searchResults = document.querySelector(".search-results");
 const style = {
@@ -15,11 +16,14 @@ const style = {
   dashArray: 0,
   fillOpacity: 0.65,
 };
-const accessToken = "pk.eyJ1IjoieGF2aWVyYmVsbGhhZGRvbiIsImEiOiJja2h0dWJzd3owMnV0MnJydmI5dXp1MjJrIn0.XsZhwZnA3zq2_SZZ5TF1RA";
+const accessToken =
+  "pk.eyJ1IjoieGF2aWVyYmVsbGhhZGRvbiIsImEiOiJja2h0dWJzd3owMnV0MnJydmI5dXp1MjJrIn0.XsZhwZnA3zq2_SZZ5TF1RA";
 
-L.control.zoom({
-  position: 'bottomright'
-}).addTo(map);
+L.control
+  .zoom({
+    position: "bottomright",
+  })
+  .addTo(map);
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
@@ -46,7 +50,11 @@ function visualize() {
   req.send();
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
-    incidentNumber.innerHTML = `<h1>${data.length}</h1>`;
+    const total = data.length.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    incidentNumber.innerHTML = `
+    <h1>${total}</h1>
+    <p>incidents countrywide</p>
+    `;
     data.forEach((incident) => {
       const lat = incident.geocoding.lat;
       const long = incident.geocoding.long;
@@ -73,11 +81,11 @@ function handleSearch(searchTerm) {
     const data = JSON.parse(req.responseText).data;
     data.forEach((incident) => {
       const el = document.createElement("div");
-      const date = new Date(incident.date)
+      const date = new Date(incident.date);
 
       let evidence = "";
 
-      el.classList.add("incident")
+      el.classList.add("incident");
 
       // const streams = incident.evidence[0].video[0].streams;
 
@@ -91,7 +99,9 @@ function handleSearch(searchTerm) {
 
       el.innerHTML = `
       <h2>${incident.title}</h2>
-      <h3>${(date.getMonth()+1) + '/' + date.getDate() + "/" + date.getFullYear()} &#183 ${incident.city}, ${incident.state}</h3>
+      <h3>${
+        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+      } &#183 ${incident.city}, ${incident.state}</h3>
       ${evidence}
       `;
       searchResults.appendChild(el);
@@ -106,6 +116,7 @@ form.addEventListener("submit", (event) => {
   handleSearch(textInput.value);
 });
 
-map.on('moveend', function() { 
-  console.log(map.getBounds());
+exitButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  searchResults.innerHTML = "";
 });

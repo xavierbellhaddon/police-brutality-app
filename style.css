@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 ::placeholder {
@@ -19,6 +20,7 @@ html {
   background-color: #0a0a0a;
 }
 
+p,
 h1,
 h2,
 h3 {
@@ -58,6 +60,11 @@ form {
     text-align: center;
     border: 1px solid #5e5e5e;
     color: white;
+    padding: 1em;
+}
+
+.incident-number h1 {
+    color: red;
 }
 
 .fa-search {
@@ -86,7 +93,6 @@ form {
   color: #191a1a;
   background-color: lightgray;
   border: none;
-  /* border-radius: 5px; */
   flex-grow: 100;
 }
 
