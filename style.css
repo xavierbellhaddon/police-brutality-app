@@ -45,21 +45,40 @@ form {
   z-index: 0;
 }
 
+.incident-number {
+    background-color: #0a0a0a;
+    position: absolute;
+    top: 104px;
+    width: 300px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    border: 1px solid #5e5e5e;
+    color: white;
+}
+
 .fa-search {
   color: white;
 }
 
+.fa-times {
+    color: white;
+}
+
 .search {
-  margin-bottom: 1em;
-  padding: 2em;
-  background-color: #0a0a0a;
+  padding: 2em 1em;
+  /* background-color: #0a0a0a; */
   width: 100%;
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 0;
+  left: 0;
   display: flex;
   flex-flow: column;
+  width: 500px;
 }
 
 .text-input {
@@ -67,15 +86,21 @@ form {
   color: #191a1a;
   background-color: lightgray;
   border: none;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+  flex-grow: 100;
 }
 
-.submit {
-  margin-left: 0.5em;
+.search-button, .exit-button {
   width: 40px;
-  background-color: #343332;
   border: none;
-  border-radius: 5px;
+}
+
+.search-button {
+    background-color: #343332;
+}
+
+.exit-button {
+    background-color: transparent;
 }
 
 .search-results {

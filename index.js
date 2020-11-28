@@ -1,3 +1,4 @@
+const incidentNumber = document.querySelector(".incident-number")
 const form = document.querySelector("form");
 const textInput = document.querySelector(".text-input");
 const map = L.map("map", {
@@ -45,6 +46,7 @@ function visualize() {
   req.send();
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
+    incidentNumber.innerHTML = `<h1>${data.length}</h1>`;
     data.forEach((incident) => {
       const lat = incident.geocoding.lat;
       const long = incident.geocoding.long;
