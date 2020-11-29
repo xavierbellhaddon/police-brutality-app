@@ -6,8 +6,9 @@ const map = L.map("map", {
   zoomControl: false,
   scrollWheelZoom: false,
   attributionControl: false,
-}).setView([41.0000, -95.0000], 4);
+}).setView([41.0, -95.0], 4);
 const searchResults = document.querySelector(".search-results");
+
 const style = {
   color: "white",
   fillColor: "black",
@@ -16,6 +17,7 @@ const style = {
   dashArray: 0,
   fillOpacity: 0.65,
 };
+
 const accessToken =
   "pk.eyJ1IjoieGF2aWVyYmVsbGhhZGRvbiIsImEiOiJja2h0dWJzd3owMnV0MnJydmI5dXp1MjJrIn0.XsZhwZnA3zq2_SZZ5TF1RA";
 
@@ -39,8 +41,49 @@ L.tileLayer(
   }
 ).addTo(map);
 
-L.geoJson(statesData, {
+function onEachFeature(feature, layer) {
+  layer.on({
+    mouseover: highlightFeature,
+    mouseout: resetHighlight,
+    click: clickState,
+  });
+}
+
+let geojson;
+
+function highlightFeature(e) {
+  let layer = e.target;
+
+  layer.setStyle({
+    weight: 5,
+    color: "white",
+    fillColor: "white",
+    dashArray: "",
+    fillOpacity: 0.7,
+  });
+
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToFront();
+  }
+}
+
+function resetHighlight(e) {
+  let layer = e.target;
+  geojson.resetStyle(layer);
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToBack();
+  }
+}
+
+function clickState(e) {
+  const layer = e.target;
+  const state = layer.feature.properties.name;
+  handleSearch(state);
+}
+
+geojson = L.geoJson(statesData, {
   style: style,
+  onEachFeature: onEachFeature,
 }).addTo(map);
 
 function visualize() {
@@ -50,7 +93,7 @@ function visualize() {
   req.send();
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
-    const total = data.length.toLocaleString()
+    const total = data.length.toLocaleString();
     incidentNumber.innerHTML = `
     <h1>${total}</h1>
     <p>incidents countrywide</p>
@@ -60,7 +103,7 @@ function visualize() {
       const long = incident.geocoding.long;
       L.circle([lat, long], {
         color: "red",
-        fillColor: "#f03",
+        fillColor: "red",
         fillOpacity: 0.05,
         radius: 50000,
         weight: 1,
@@ -70,7 +113,7 @@ function visualize() {
 }
 
 function handleSearch(searchTerm) {
-  searchResults.innerHTML = "";
+  // searchResults.innerHTML = "";
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
     searchTerm.split(" ").join("+");
@@ -78,6 +121,7 @@ function handleSearch(searchTerm) {
   req.open("GET", url);
   req.send();
   req.onload = function () {
+    searchResults.innerHTML = "";
     const data = JSON.parse(req.responseText).data;
     data.forEach((incident) => {
       const el = document.createElement("div");

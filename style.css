@@ -49,30 +49,29 @@ form {
   right: 0;
   top: 104px;
   z-index: 0;
-  /* border-top: 1px solid #5e5e5e; */
   border-bottom: 1px solid #5e5e5e;
 }
 
 .incident-number {
-    background-color: #0a0a0a;
-    position: absolute;
-    height: 106px;
-    top: 104px;
-    width: 300px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 0 0 10px 10px;
-    text-align: center;
-    border: 1px solid #5e5e5e;
-    border-top: none;
-    color: white;
-    padding: 1em;
+  background-color: #0a0a0a;
+  position: absolute;
+  height: 105px;
+  top: 104px;
+  width: 300px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  border: 1px solid #5e5e5e;
+  border-top: none;
+  color: white;
+  padding: 1em;
 }
 
 .incident-number h1 {
-    color: red;
+  color: red;
 }
 
 .fa-search {
@@ -80,24 +79,18 @@ form {
 }
 
 .fa-times {
-    color: white;
+  color: white;
 }
 
 .search {
   padding: 2em;
   position: absolute;
-  /* z-index: 1; */
-  /* top: 0; */
   top: 104px;
   left: 0;
-  /* display: flex;
-  flex-direction: column; */
   width: 500px;
-  /* border-top: 1px solid #5e5e5e; */
   border-bottom: 1px solid #5e5e5e;
   border-right: 1px solid #5e5e5e;
   background-color: #0a0a0a;
-  
 }
 
 .text-input {
@@ -108,17 +101,18 @@ form {
   flex-grow: 100;
 }
 
-.search-button, .exit-button {
+.search-button,
+.exit-button {
   width: 40px;
   border: none;
 }
 
 .search-button {
-    background-color: #343332;
+  background-color: #343332;
 }
 
 .exit-button {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .search-results.open {
@@ -127,9 +121,12 @@ form {
   position: absolute;
   left: 0;
   top: 105px;
-  height: 494px;
+  /* height: 494px; */
+  height: min-content;
+  max-height: 495px;
   overflow-y: auto;
   width: 500px;
+  border-bottom: 1px solid #5e5e5e;
 }
 
 .incident {
@@ -142,7 +139,6 @@ form {
 }
 
 .incident:last-child {
-    margin: 0;
-    border-bottom: none;
+  margin: 0;
+  border-bottom: none;
 }
-
