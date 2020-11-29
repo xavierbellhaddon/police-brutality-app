@@ -24,7 +24,7 @@ p,
 h1,
 h2,
 h3 {
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Lato', "Helvetica", sans-serif;
   color: white;
 }
 
@@ -74,11 +74,7 @@ form {
   color: red;
 }
 
-.fa-search {
-  color: white;
-}
-
-.fa-times {
+.fa-search, .fa-times {
   color: white;
 }
 

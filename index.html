@@ -10,32 +10,34 @@
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
   <link rel="stylesheet" href="./css/all.css" </head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
 
-  <body>
-    <div class="header">
-      <h1>Police Brutality App</h1>
-    </div>
-      <div id="map"></div>
-      <div class=incident-number>
-      </div>
-      <div class="search">
-        <form>
-          <input type="text" class="text-input" placeholder="Search states..."></input>
-          <button type="submit" class="search-button">
-            <i class="fas fa-search"></i>
-          </button>
-          <button class="exit-button">
-            <i class="fas fa-times"></i>
-          </button>
-        </form>
-        <div class="search-results"></div>
-        </div>
-      </div>
-      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-      <script src="https://leafletjs.com/examples/choropleth/us-states.js"></script>
-      <script src="index.js"></script>
+<body>
+  <div class="header">
+    <h1>Police Brutality App</h1>
+  </div>
+  <div id="map"></div>
+  <div class=incident-number>
+  </div>
+  <div class="search">
+    <form>
+      <input type="text" class="text-input" placeholder="Search states..."></input>
+      <button type="submit" class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="exit-button">
+        <i class="fas fa-times"></i>
+      </button>
+    </form>
+    <div class="search-results"></div>
+  </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <script src="https://leafletjs.com/examples/choropleth/us-states.js"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
