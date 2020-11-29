@@ -98,7 +98,9 @@ function visualize() {
     <h1>${total}</h1>
     <p>incidents countrywide</p>
     `;
-    data.forEach((incident) => {
+
+    for (let i = 0; i < data.length; i++) {
+      const incident = data[i];
       const lat = incident.geocoding.lat;
       const long = incident.geocoding.long;
       L.circle([lat, long], {
@@ -108,7 +110,7 @@ function visualize() {
         radius: 50000,
         weight: 1,
       }).addTo(map);
-    });
+    }
   };
 }
 
@@ -127,27 +129,18 @@ function handleSearch(searchTerm) {
     if (data.length) {
       searchResults.classList.add("open");
     } else {
-      console.log("shit")
+      console.log("shit");
       searchResults.classList.remove("open");
     }
 
-    data.forEach((incident) => {
+    for (i = 0; i < data.length; i++) {
+      const incident = data[i];
       const el = document.createElement("div");
-      const date = new Date(incident.date);
+      const date = new Date(data[i].date);
 
       let evidence = "";
 
       el.classList.add("incident");
-
-      // const streams = incident.evidence[0].video[0].streams;
-
-      // // for (let i = 0; i < incident.evidence.length; i++) {
-      // //   evidence += `<p>${incident.evidence[i].url}</p>`;
-      // // }
-
-      // for (let i = 0; i < streams.length; i++) {
-      //   evidence += `<iframe width='560' height='315' src='${streams[i].url}' frameborder='0' allowfullscreen></iframe></iframe>`
-      // }
 
       el.innerHTML = `
       <h2>${incident.title}</h2>
@@ -157,7 +150,7 @@ function handleSearch(searchTerm) {
       ${evidence}
       `;
       searchResults.appendChild(el);
-    });
+    }
   };
 }
 
