@@ -113,7 +113,6 @@ function visualize() {
 }
 
 function handleSearch(searchTerm) {
-  // searchResults.innerHTML = "";
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
     searchTerm.split(" ").join("+");
@@ -123,13 +122,19 @@ function handleSearch(searchTerm) {
   req.onload = function () {
     searchResults.innerHTML = "";
     const data = JSON.parse(req.responseText).data;
+
+    if (data.length) {
+      searchResults.classList.add("open");
+    } else {
+      console.log("shit")
+      searchResults.classList.remove("open");
+    }
+
     data.forEach((incident) => {
       const el = document.createElement("div");
       const date = new Date(incident.date);
 
       let evidence = "";
-
-      searchResults.classList.add("open");
 
       el.classList.add("incident");
 
@@ -164,6 +169,7 @@ form.addEventListener("submit", (event) => {
 
 exitButton.addEventListener("click", (event) => {
   event.preventDefault();
+  textInput.value = "";
   searchResults.classList.remove("open");
   searchResults.innerHTML = "";
 });
