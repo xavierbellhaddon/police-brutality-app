@@ -116,8 +116,7 @@ form {
   border-right: 1px solid #5e5e5e;
   position: absolute;
   left: 0;
-  top: 105px;
-  /* height: 494px; */
+  top: 209px;
   height: min-content;
   max-height: 495px;
   overflow-y: auto;
@@ -137,4 +136,18 @@ form {
 .incident:last-child {
   margin-bottom: 0;
   border-bottom: none;
+}
+
+@media (max-width: 500px) {
+
+  #map, .header, .search, .search-results.open {
+    width: 100%;
+    border-right: none;
+    min-width: 350px;
+  }
+
+  .incident-number {
+    display: none;
+  }
+
 }
