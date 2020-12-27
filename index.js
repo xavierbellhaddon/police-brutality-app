@@ -138,10 +138,10 @@ function handleSearch(searchTerm) {
       const el = document.createElement("div");
       const date = new Date(data[i].date);
 
-      let evidence = '';
-
-
+      let evidence = "";
+      
       if (incident.evidence.length > 0) {
+        evidence = "<h3>Links</h3><ul>";
 
         for (let i = 0; i < incident.evidence.length; i++) {
           const video = incident.evidence[i].video[0];
@@ -149,12 +149,18 @@ function handleSearch(searchTerm) {
 
           if (video.site) {
             destination = `on ${video.site}`
+
           }
 
+        // video.title.split(" ").slice(0, 5).join(" ")
+        // evidence += `<p><a href="${video.evidence_url}" target="_blank">View evidence ${destination}</a></p>`
+        evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.title}</a></li>`
 
-        evidence += `<p><a href="${video.evidence_url}" target="_blank">View evidence ${destination}</a></p>`
         }
+
+        evidence += "</ul>"
       } 
+
 
       el.classList.add("incident");
 

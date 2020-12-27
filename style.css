@@ -20,19 +20,25 @@ html {
   background-color: #0a0a0a;
 }
 
-p,
-h1,
-h2,
-h3,
-a,
-ul {
+body {
   font-family: 'Lato', "Helvetica", sans-serif;
   color: white;
+}
+
+a {
+  display: inline-block;
+  color: white;
+  margin-top: 8px;
 }
 
 form {
   display: flex;
   height: 40px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 .header {
@@ -140,13 +146,6 @@ form {
   border-bottom: none;
 }
 
-.selected {
-  background-color: red;
-  width: 1000px;
-  height: 1000px;
-  z-index: 10;
-}
-
 @media (max-width: 500px) {
 
   #map, .header, .search, .search-results.open {
@@ -159,4 +158,11 @@ form {
     display: none;
   }
 
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
