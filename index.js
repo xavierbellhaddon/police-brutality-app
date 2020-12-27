@@ -145,7 +145,11 @@ function handleSearch(searchTerm) {
 
         for (let i = 0; i < incident.evidence.length; i++) {
           const video = incident.evidence[i].video[0];
-          evidence += `<p><a href="${video.evidence_url}" target="_blank">View video evidence on ${video.site}</a></p>`
+          if (!video.site) {
+            evidence += `<p><a href="${video.evidence_url}" target="_blank">View evidence</a></p>`
+          } else {
+            evidence += `<p><a href="${video.evidence_url}" target="_blank">View evidence on ${video.site}</a></p>`
+          }
         }
       } 
 
