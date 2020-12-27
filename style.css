@@ -23,7 +23,9 @@ html {
 p,
 h1,
 h2,
-h3 {
+h3,
+a,
+ul {
   font-family: 'Lato', "Helvetica", sans-serif;
   color: white;
 }
@@ -136,6 +138,13 @@ form {
 .incident:last-child {
   margin-bottom: 0;
   border-bottom: none;
+}
+
+.selected {
+  background-color: red;
+  width: 1000px;
+  height: 1000px;
+  z-index: 10;
 }
 
 @media (max-width: 500px) {

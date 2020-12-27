@@ -17,21 +17,23 @@
   <div class="header">
     <h1>Police Brutality App</h1>
   </div>
-  <div id="map"></div>
-  <div class=incident-number>
+  <div class="app">
+    <div id="map"></div>
+    <div class=incident-number>
+    </div>
+    <div class="search">
+      <form>
+        <input type="text" class="text-input" placeholder="Search states..."></input>
+        <button type="submit" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="exit-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </form>
+    </div>
+    <div class="search-results"></div>
   </div>
-  <div class="search">
-    <form>
-      <input type="text" class="text-input" placeholder="Search states..."></input>
-      <button type="submit" class="search-button">
-        <i class="fas fa-search"></i>
-      </button>
-      <button class="exit-button">
-        <i class="fas fa-times"></i>
-      </button>
-    </form>
-  </div>
-  <div class="search-results"></div>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>

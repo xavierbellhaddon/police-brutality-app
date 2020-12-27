@@ -138,7 +138,16 @@ function handleSearch(searchTerm) {
       const el = document.createElement("div");
       const date = new Date(data[i].date);
 
-      let evidence = "";
+      let evidence = '';
+
+
+      if (incident.evidence.length > 0) {
+
+        for (let i = 0; i < incident.evidence.length; i++) {
+          const video = incident.evidence[i].video[0];
+          evidence += `<p><a href="${video.evidence_url}" target="_blank">View video evidence on ${video.site}</a></p>`
+        }
+      } 
 
       el.classList.add("incident");
 
@@ -146,9 +155,7 @@ function handleSearch(searchTerm) {
       <h2>${incident.title}</h2>
       <h3>${
         date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-      } &#183 ${incident.city}, ${incident.state}</h3>
-      ${evidence}
-      `;
+      } &#183 ${incident.city}, ${incident.state}</h3>${evidence}`;
       searchResults.appendChild(el);
     }
   };
