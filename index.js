@@ -96,7 +96,7 @@ function visualize() {
     const total = data.length.toLocaleString();
     incidentNumber.innerHTML = `
     <h1>${total}</h1>
-    <p>incidents countrywide</p>
+    <p>reported incidents of police brutality in the United States since the murder of George Floyd on May 5, 2020</p>
     `;
 
     for (let i = 0; i < data.length; i++) {
@@ -129,7 +129,6 @@ function handleSearch(searchTerm) {
     if (data.length) {
       searchResults.classList.add("open");
     } else {
-      console.log("shit");
       searchResults.classList.remove("open");
     }
 
@@ -154,8 +153,10 @@ function handleSearch(searchTerm) {
 
         // video.title.split(" ").slice(0, 5).join(" ")
         // evidence += `<p><a href="${video.evidence_url}" target="_blank">View evidence ${destination}</a></p>`
-        evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.title}</a></li>`
+        evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.evidence_url}</a></li>`
 
+
+        console.log(video.title)
         }
 
         evidence += "</ul>"
@@ -170,6 +171,8 @@ function handleSearch(searchTerm) {
         date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
       } &#183 ${incident.city}, ${incident.state}</h3>${evidence}`;
       searchResults.appendChild(el);
+
+      
     }
   };
 }

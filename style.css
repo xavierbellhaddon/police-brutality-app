@@ -33,7 +33,10 @@ a {
 
 form {
   display: flex;
-  height: 40px;
+  height: 30px;
+  flex-grow: 100;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 ul {
@@ -42,7 +45,7 @@ ul {
 }
 
 .header {
-  height: 104px;
+  height: 10vh;
   background-color: #0a0a0a;
   border-bottom: 1px solid #5e5e5e;
   display: flex;
@@ -51,29 +54,29 @@ ul {
 }
 
 #map {
-  height: 600px;
+  height: 90vh;
   position: absolute;
   left: 0;
   right: 0;
-  top: 104px;
+  top: 10vh;
   z-index: 0;
   border-bottom: 1px solid #5e5e5e;
 }
 
 .incident-number {
+  margin-top: 1em;
   background-color: #0a0a0a;
   position: absolute;
-  height: 105px;
-  top: 104px;
+  top: 10vh;
   width: 300px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 0 0 10px 10px;
+  /* left: 0; */
+  right: 1em;
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* border-radius: 0 0 10px 10px; */
   text-align: center;
   border: 1px solid #5e5e5e;
-  border-top: none;
+  /* border-top: none; */
   color: white;
   padding: 1em;
 }
@@ -87,17 +90,18 @@ ul {
 }
 
 .search {
-  padding: 2em;
+  height: 10vh;
+  /* padding: 2em; */
   position: absolute;
-  top: 104px;
+  top: 0;
   left: 0;
   width: 500px;
-  border-bottom: 1px solid #5e5e5e;
-  border-right: 1px solid #5e5e5e;
-  background-color: #0a0a0a;
+  align-items: center;
+  display: flex;
 }
 
 .text-input {
+  /* margin-left: 1em; */
   padding: 1em;
   color: #191a1a;
   background-color: lightgray;
@@ -124,9 +128,11 @@ ul {
   border-right: 1px solid #5e5e5e;
   position: absolute;
   left: 0;
-  top: 209px;
+  /* top: 209px; */
+  top: 10vh;
   height: min-content;
-  max-height: 495px;
+  /* max-height: 495px; */
+  max-height: 90vh;
   overflow-y: auto;
   width: 500px;
   border-bottom: 1px solid #5e5e5e;
