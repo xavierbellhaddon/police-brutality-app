@@ -6,7 +6,7 @@ const map = L.map("map", {
   zoomControl: false,
   scrollWheelZoom: false,
   attributionControl: false,
-}).setView([41.0, -95.0], 4);
+}).setView([39.0, -95.0], 4);
 const searchResults = document.querySelector(".search-results");
 
 const style = {
@@ -55,11 +55,11 @@ function highlightFeature(e) {
   let layer = e.target;
 
   layer.setStyle({
-    weight: 5,
+    weight: 3,
     color: "white",
-    fillColor: "white",
-    dashArray: "",
-    fillOpacity: 0.7,
+    fillColor: "black",
+    opacity: 1,
+    fillOpacity: 0.65,
   });
 
   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -108,7 +108,7 @@ function visualize() {
         fillColor: "red",
         fillOpacity: 0.05,
         radius: 50000,
-        weight: 1,
+        weight: 3,
       }).addTo(map);
     }
   };
@@ -132,7 +132,7 @@ function handleSearch(searchTerm) {
       searchResults.classList.remove("open");
     }
 
-    let resultsHTML = ''
+    let resultsHTML = '';
 
     for (i = 0; i < data.length; i++) {
       const incident = data[i];
@@ -145,15 +145,8 @@ function handleSearch(searchTerm) {
 
         for (let i = 0; i < incident.evidence.length; i++) {
           const video = incident.evidence[i].video[0];
-          let destination = '';
 
-          if (video.site) {
-            destination = `on ${video.site}`
-
-          }
-
-        evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.evidence_url}</a></li>`
-
+          evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.evidence_url}</a></li>`
         }
 
         evidence += "</ul>"
@@ -167,6 +160,10 @@ function handleSearch(searchTerm) {
         <p>${incident.title}.</p>
         ${evidence}
       </div>`;
+
+    
+
+      
     }
     searchResults.innerHTML = resultsHTML;
   };
