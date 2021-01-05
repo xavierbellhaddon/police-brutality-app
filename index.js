@@ -141,7 +141,7 @@ function handleSearch(searchTerm) {
       let evidence = "";
       
       if (incident.evidence.length > 0) {
-        evidence = "<h2>Links</h2><ul>";
+        evidence = "<h3>Links</h3><ul>";
 
         for (let i = 0; i < incident.evidence.length; i++) {
           const video = incident.evidence[i].video[0];
@@ -160,10 +160,6 @@ function handleSearch(searchTerm) {
         <p>${incident.title}.</p>
         ${evidence}
       </div>`;
-
-    
-
-      
     }
     searchResults.innerHTML = resultsHTML;
   };
@@ -179,6 +175,7 @@ form.addEventListener("submit", (event) => {
 exitButton.addEventListener("click", (event) => {
   event.preventDefault();
   textInput.value = "";
+  searchResults.scrollTop = 0;
   searchResults.classList.remove("open");
   searchResults.innerHTML = "";
 });
