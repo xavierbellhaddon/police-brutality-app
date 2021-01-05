@@ -124,7 +124,10 @@ ul {
 
 .search-results p {
   margin-top: 8px;
-  margin-bottom: 16px;
+}
+
+.search-results h3 {
+  margin-top: 24px;
 }
 
 .incident {
@@ -144,6 +147,10 @@ ul {
 .incident:last-child {
   margin-bottom: 0;
   border-bottom: none;
+}
+
+.incident:only-child {
+  border-bottom: 1px solid #5e5e5e;
 }
 
 .truncate {
