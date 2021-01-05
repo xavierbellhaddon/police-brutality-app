@@ -132,9 +132,10 @@ function handleSearch(searchTerm) {
       searchResults.classList.remove("open");
     }
 
+    let resultsHTML = ''
+
     for (i = 0; i < data.length; i++) {
       const incident = data[i];
-      const el = document.createElement("div");
       const date = new Date(data[i].date);
 
       let evidence = "";
@@ -151,31 +152,23 @@ function handleSearch(searchTerm) {
 
           }
 
-        // video.title.split(" ").slice(0, 5).join(" ")
-        // evidence += `<p><a href="${video.evidence_url}" target="_blank">View evidence ${destination}</a></p>`
         evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.evidence_url}</a></li>`
 
-
-        console.log(video.title)
         }
 
         evidence += "</ul>"
       } 
 
-
-      el.classList.add("incident");
-
-      el.innerHTML = `
-      
-      <h2>${
-        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-      } &#183 ${incident.city}, ${incident.state}</h2>
-      <p>${incident.title}.</p>
-      ${evidence}`;
-      searchResults.appendChild(el);
-
-      
+      resultsHTML += `
+      <div class="incident">
+        <h2>${
+          date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+        } &#183 ${incident.city}, ${incident.state}</h2>
+        <p>${incident.title}.</p>
+        ${evidence}
+      </div>`;
     }
+    searchResults.innerHTML = resultsHTML;
   };
 }
 
