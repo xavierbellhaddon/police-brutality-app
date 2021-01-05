@@ -140,7 +140,7 @@ function handleSearch(searchTerm) {
       let evidence = "";
       
       if (incident.evidence.length > 0) {
-        evidence = "<h3>Links</h3><ul>";
+        evidence = "<h2>Links</h2><ul>";
 
         for (let i = 0; i < incident.evidence.length; i++) {
           const video = incident.evidence[i].video[0];
@@ -166,10 +166,12 @@ function handleSearch(searchTerm) {
       el.classList.add("incident");
 
       el.innerHTML = `
-      <h2>${incident.title}</h2>
-      <h3>${
+      
+      <h2>${
         date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-      } &#183 ${incident.city}, ${incident.state}</h3>${evidence}`;
+      } &#183 ${incident.city}, ${incident.state}</h2>
+      <p>${incident.title}.</p>
+      ${evidence}`;
       searchResults.appendChild(el);
 
       

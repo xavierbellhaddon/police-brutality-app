@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', "Helvetica", sans-serif;
+  font-family: "Lato", "Helvetica", sans-serif;
   color: white;
 }
 
@@ -69,14 +69,9 @@ ul {
   position: absolute;
   top: 10vh;
   width: 300px;
-  /* left: 0; */
   right: 1em;
-  /* margin-left: auto;
-  margin-right: auto; */
-  /* border-radius: 0 0 10px 10px; */
   text-align: center;
   border: 1px solid #5e5e5e;
-  /* border-top: none; */
   color: white;
   padding: 1em;
 }
@@ -85,13 +80,13 @@ ul {
   color: red;
 }
 
-.fa-search, .fa-times {
+.fa-search,
+.fa-times {
   color: white;
 }
 
 .search {
   height: 10vh;
-  /* padding: 2em; */
   position: absolute;
   top: 0;
   left: 0;
@@ -101,7 +96,6 @@ ul {
 }
 
 .text-input {
-  /* margin-left: 1em; */
   padding: 1em;
   color: #191a1a;
   background-color: lightgray;
@@ -128,14 +122,17 @@ ul {
   border-right: 1px solid #5e5e5e;
   position: absolute;
   left: 0;
-  /* top: 209px; */
   top: 10vh;
   height: min-content;
-  /* max-height: 495px; */
   max-height: 90vh;
   overflow-y: auto;
   width: 500px;
   border-bottom: 1px solid #5e5e5e;
+}
+
+.search-results p {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .incident {
@@ -152,9 +149,18 @@ ul {
   border-bottom: none;
 }
 
-@media (max-width: 500px) {
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
 
-  #map, .header, .search, .search-results.open {
+@media (max-width: 500px) {
+  #map,
+  .header,
+  .search,
+  .search-results.open {
     width: 100%;
     border-right: none;
     min-width: 350px;
@@ -163,12 +169,4 @@ ul {
   .incident-number {
     display: none;
   }
-
-}
-
-.truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
 }
