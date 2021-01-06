@@ -159,7 +159,8 @@ function handleSearch(searchTerm) {
         } &#183 ${incident.city}, ${incident.state}</h2>
         <p>${incident.title}.</p>
         ${evidence}
-      </div>`;
+      </div>
+      `;
     }
     searchResults.innerHTML = resultsHTML;
   };
