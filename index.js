@@ -96,7 +96,7 @@ function visualize() {
     const data = JSON.parse(req.responseText).data;
     const total = data.length;
     
-    new CountUp('counter', total).start();
+    new CountUp('totalCounter', total).start();
 
     for (let i = 0; i < data.length; i++) {
       const incident = data[i];
