@@ -135,7 +135,7 @@ function handleSearch(searchTerm) {
 
     let resultsHTML = '';
 
-    for (i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       const incident = data[i];
       const date = new Date(data[i].date);
 
@@ -164,6 +164,7 @@ function handleSearch(searchTerm) {
       `;
     }
     searchResults.innerHTML = resultsHTML;
+    console.log(searchResults)
   };
 }
 
