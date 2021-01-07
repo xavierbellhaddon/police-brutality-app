@@ -104,6 +104,8 @@ function visualize() {
       const lat = incident.geocoding.lat;
       const long = incident.geocoding.long;
       L.circle([lat, long], {
+        pane: "markerPane",
+        interactive: false,
         color: "red",
         fillColor: "red",
         fillOpacity: 0.05,
