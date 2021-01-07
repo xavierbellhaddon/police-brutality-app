@@ -161,7 +161,7 @@ ul {
   #map {
     top: 20vh;
     left: 0;
-    height: 50vh;
+    height: 70vh;
     border-left: none;
     border-bottom: 1px solid #5e5e5e;
   }
@@ -182,12 +182,12 @@ ul {
   }
   
   .search {
-    top: 70vh; 
+    top: 90vh; 
     width: 100%;
   }
 
   .search-results.open {
-    top: 80vh;
+    top: 100vh;
     width: 100%;
   }
 }
