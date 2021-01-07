@@ -1,4 +1,5 @@
-const incidentNumber = document.querySelector(".incident-number");
+import { CountUp } from "./countUp.min.js";
+
 const form = document.querySelector("form");
 const exitButton = document.querySelector(".exit-button");
 const textInput = document.querySelector(".text-input");
@@ -93,11 +94,9 @@ function visualize() {
   req.send();
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
-    const total = data.length.toLocaleString();
-    incidentNumber.innerHTML = `
-    <h1>${total}</h1>
-    <p>reported incidents of police brutality in the United States since the murder of George Floyd on May 5, 2020</p>
-    `;
+    const total = data.length;
+    
+    new CountUp('counter', total).start();
 
     for (let i = 0; i < data.length; i++) {
       const incident = data[i];
