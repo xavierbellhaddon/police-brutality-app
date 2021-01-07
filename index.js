@@ -153,18 +153,23 @@ function handleSearch(searchTerm) {
         evidence += "</ul>"
       } 
 
+      let location = ` ${incident.city}, ${incident.state}</h2>`
+
+      if (incident.state === "Washington DC") {
+        location = "Washington, D.C."
+      }
+
       resultsHTML += `
       <div class="incident">
         <h2>${
           date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-        } &#183 ${incident.city}, ${incident.state}</h2>
+        } &#183 ${location}
         <p>${incident.title}.</p>
         ${evidence}
       </div>
       `;
     }
     searchResults.innerHTML = resultsHTML;
-    console.log(searchResults)
   };
 }
 
