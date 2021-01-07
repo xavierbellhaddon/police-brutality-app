@@ -116,9 +116,15 @@ function visualize() {
 }
 
 function handleSearch(searchTerm) {
+  let state = searchTerm.split(" ").join("+");
+
+  if (searchTerm.toUpperCase() === "DISTRICT OF COLUMBIA") {
+    state = "Washington DC";
+  }
+
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
-    searchTerm.split(" ").join("+");
+    `${state}`;
   const req = new XMLHttpRequest();
   searchResults.scrollTop = 0;
   req.open("GET", url);
