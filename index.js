@@ -4,7 +4,6 @@ const form = document.querySelector("form");
 const exitButton = document.querySelector(".exit-button");
 const textInput = document.querySelector(".text-input");
 const map = L.map("map", {
-  zoomControl: false,
   scrollWheelZoom: false,
   attributionControl: false,
 }).setView([39.0, -95.0], 4);
@@ -22,11 +21,7 @@ const style = {
 const accessToken =
   "pk.eyJ1IjoieGF2aWVyYmVsbGhhZGRvbiIsImEiOiJja2h0dWJzd3owMnV0MnJydmI5dXp1MjJrIn0.XsZhwZnA3zq2_SZZ5TF1RA";
 
-L.control
-  .zoom({
-    position: "bottomright",
-  })
-  .addTo(map);
+map.zoomControl.setPosition("bottomright")
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
@@ -36,8 +31,8 @@ L.tileLayer(
       'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: "mapbox/dark-v10",
-    tileSize: 512,
-    zoomOffset: -1,
+    // tileSize: 512,
+    // zoomOffset: -1,
     accessToken: accessToken,
   }
 ).addTo(map);

@@ -156,6 +156,11 @@ ul {
   max-width: 100%;
 }
 
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  margin: 0;
+}
+
 @media (max-width: 830px) {
 
   #map {
