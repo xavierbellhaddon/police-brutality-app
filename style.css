@@ -4,16 +4,16 @@
 }
 
 ::placeholder {
-  color: #191a1a;
+  color: #1b1b1b;
   opacity: 1;
 }
 
 :-ms-input-placeholder {
-  color: #191a1a;
+  color: #1b1b1b;
 }
 
 ::-ms-input-placeholder {
-  color: #191a1a;
+  color: #1b1b1b;
 }
 
 html {
@@ -93,24 +93,33 @@ ul {
 
 .text-input {
   padding: 1em;
-  color: #191a1a;
+  color: #1b1b1b;
   background-color: lightgray;
   border: none;
   flex-grow: 100;
 }
 
-.exit-button {
-  display: none;
-}
-
 .search-button,
 .exit-button {
-  width: 80px;
   border: none;
 }
 
+.exit-button {
+  width: 40px;
+  display: none;
+}
+
 .search-button {
-  background-color: #343332;
+  width: 80px;
+  background-color: #383838;
+}
+
+.search-button:hover {
+  background-color: #575757;
+}
+
+.search-button:active {
+  background-color: #252525; 
 }
 
 .exit-button {
