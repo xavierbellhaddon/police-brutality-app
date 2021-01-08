@@ -6,7 +6,7 @@ const textInput = document.querySelector(".text-input");
 const map = L.map("map", {
   scrollWheelZoom: false,
   attributionControl: false,
-}).setView([39.0, -95.0], 4);
+}).setView([39.0, -96.0]);
 const searchResults = document.querySelector(".search-results");
 
 const style = {
@@ -21,7 +21,17 @@ const style = {
 const accessToken =
   "pk.eyJ1IjoieGF2aWVyYmVsbGhhZGRvbiIsImEiOiJja2h0dWJzd3owMnV0MnJydmI5dXp1MjJrIn0.XsZhwZnA3zq2_SZZ5TF1RA";
 
-map.zoomControl.setPosition("bottomright")
+const width = document.documentElement.clientWidth;
+
+if (width > 1900) {
+  map.setZoom(5);
+} else if (width > 1200) {
+  map.setZoom(4);
+} else {
+  map.setZoom(3);
+}
+
+map.zoomControl.setPosition("bottomright");
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
@@ -31,8 +41,8 @@ L.tileLayer(
       'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: "mapbox/dark-v10",
-    // tileSize: 512,
-    // zoomOffset: -1,
+    tileSize: 512,
+    zoomOffset: -1,
     accessToken: accessToken,
   }
 ).addTo(map);
@@ -90,8 +100,8 @@ function visualize() {
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
     const total = data.length;
-    
-    new CountUp('totalCounter', total).start();
+
+    new CountUp("totalCounter", total).start();
 
     for (let i = 0; i < data.length; i++) {
       const incident = data[i];
@@ -134,30 +144,30 @@ function handleSearch(searchTerm) {
       searchResults.classList.remove("open");
     }
 
-    let resultsHTML = '';
+    let resultsHTML = "";
 
     for (let i = 0; i < data.length; i++) {
       const incident = data[i];
       const date = new Date(data[i].date);
 
       let evidence = "";
-      
+
       if (incident.evidence.length > 0) {
         evidence = "<h3>Links</h3><ul>";
 
         for (let i = 0; i < incident.evidence.length; i++) {
           const video = incident.evidence[i].video[0];
 
-          evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.evidence_url}</a></li>`
+          evidence += `<li><a href="${video.evidence_url}" class="truncate" target="_blank">${video.evidence_url}</a></li>`;
         }
 
-        evidence += "</ul>"
-      } 
+        evidence += "</ul>";
+      }
 
-      let location = ` ${incident.city}, ${incident.state}</h2>`
+      let location = ` ${incident.city}, ${incident.state}</h2>`;
 
       if (incident.state === "Washington DC") {
-        location = "Washington, D.C."
+        location = "Washington, D.C.";
       }
 
       resultsHTML += `
@@ -187,4 +197,15 @@ exitButton.addEventListener("click", (event) => {
   searchResults.scrollTop = 0;
   searchResults.classList.remove("open");
   searchResults.innerHTML = "";
+});
+
+window.addEventListener("resize", (event) => {
+  const width = document.documentElement.clientWidth;
+  if (width > 1900) {
+    map.setZoom(5)
+  } else if (width > 1200) {
+    map.setZoom(4)
+  } else {
+    map.setZoom(3)
+  }
 });
