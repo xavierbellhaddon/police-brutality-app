@@ -99,6 +99,10 @@ ul {
   flex-grow: 100;
 }
 
+.exit-button {
+  display: none;
+}
+
 .search-button,
 .exit-button {
   width: 80px;

@@ -140,9 +140,8 @@ function handleSearch(searchTerm) {
 
     if (data.length) {
       searchResults.classList.add("open");
-    } else {
-      searchResults.classList.remove("open");
-    }
+      exitButton.style.display = "inline";
+    } 
 
     let resultsHTML = "";
 
@@ -193,6 +192,7 @@ form.addEventListener("submit", (event) => {
 
 exitButton.addEventListener("click", (event) => {
   event.preventDefault();
+  exitButton.style.display = "none";
   textInput.value = "";
   searchResults.scrollTop = 0;
   searchResults.classList.remove("open");
