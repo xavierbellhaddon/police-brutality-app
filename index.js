@@ -141,7 +141,9 @@ function handleSearch(searchTerm) {
     if (data.length) {
       searchResults.classList.add("open");
       exitButton.style.display = "inline";
-    } 
+    } else {
+      searchResults.classList.remove("open");
+    }
 
     let resultsHTML = "";
 
