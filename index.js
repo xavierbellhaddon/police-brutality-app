@@ -168,7 +168,7 @@ function handleSearch(searchTerm) {
       let location = ` ${incident.city}, ${incident.state}</h2>`;
 
       if (incident.state === "Washington DC") {
-        location = "Washington, D.C.";
+        location = "Washington, D.C.</h2>";
       }
 
       resultsHTML += `
