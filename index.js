@@ -186,7 +186,8 @@ function handleSearch(searchTerm) {
     ] &&
     !getKeyByValue(states, searchTerm)
   ) {
-    alert("invalid search");
+    console.log("invalid search");
+    return;
   } else if (getKeyByValue(states, searchTerm)) {
     searchTerm = getKeyByValue(states, searchTerm);
   }
@@ -215,6 +216,7 @@ function handleSearch(searchTerm) {
       exitButton.style.display = "inline";
     } else {
       searchResults.classList.remove("open");
+      console.log("no results found")
     }
 
     let resultsHTML = "";
