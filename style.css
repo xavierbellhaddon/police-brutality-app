@@ -177,9 +177,9 @@ ul {
 @media (max-width: 830px) {
 
   #map {
-    top: 20vh;
+    top: 150px;
     left: 0;
-    height: 50vh;
+    height: 300px;
     border-left: none;
     border-bottom: 1px solid #5e5e5e;
   }
@@ -187,7 +187,7 @@ ul {
   .incident-number {
     top: 0;
     left: 0;
-    height: 20vh;
+    height: 150px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -201,12 +201,14 @@ ul {
   }
   
   .search {
-    top: 70vh; 
+    top: 450px;
+    height: 70px;
     width: 100%;
   }
 
   .search-results.open {
-    top: 80vh;
+    top: 520px;
+    height: 100%;
     width: 100%;
   }
 }
