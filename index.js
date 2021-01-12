@@ -89,7 +89,7 @@ map.zoomControl.setPosition("bottomright");
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
-  accessToken,
+    accessToken,
   {
     attribution:
       'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -180,7 +180,10 @@ function getKeyByValue(object, value) {
 
 function handleSearch(searchTerm) {
   if (
-    !states[searchTerm.toLowerCase().charAt(0).toUpperCase() + searchTerm.toLowerCase().slice(1)] &&
+    !states[
+      searchTerm.toLowerCase().charAt(0).toUpperCase() +
+        searchTerm.toLowerCase().slice(1)
+    ] &&
     !getKeyByValue(states, searchTerm)
   ) {
     alert("invalid search");
@@ -242,7 +245,8 @@ function handleSearch(searchTerm) {
 
       resultsHTML += `
       <div class="incident">
-        <h2>${date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+        <h2>${
+          date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
         } &#183 ${location}
         <p>${incident.title}.</p>
         ${evidence}
@@ -279,10 +283,3 @@ window.addEventListener("resize", (event) => {
     map.setZoom(3);
   }
 });
-
-let viewport = document.querySelector("meta[name=viewport]")
- viewport.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
-
-document.documentElement.style.setProperty("overflow", "auto")
-const metaViewport = document.querySelector("meta[name=viewport]")
-metaViewport.setAttribute("content", "height=" + initialHeight + "px, width=device-width, initial-scale=1.0")
