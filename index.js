@@ -179,11 +179,17 @@ function getKeyByValue(object, value) {
 }
 
 function handleSearch(searchTerm) {
+
+  let key = searchTerm.toLowerCase().split(" ")
+
+  for (let i = 0; i < key.length; i++) {
+    key[i] = key[i][0].toUpperCase() + key[i].substr(1);
+}
+
+key = key.join(" ");
+
   if (
-    !states[
-      searchTerm.toLowerCase().charAt(0).toUpperCase() +
-        searchTerm.toLowerCase().slice(1)
-    ] &&
+    !states[key] &&
     !getKeyByValue(states, searchTerm)
   ) {
     console.log("invalid search");
@@ -217,8 +223,9 @@ function handleSearch(searchTerm) {
     } else {
       searchResults.classList.remove("open");
       console.log("no results found")
+      return;
     }
-
+  
     let resultsHTML = "";
 
     for (let i = 0; i < data.length; i++) {
@@ -260,6 +267,7 @@ function handleSearch(searchTerm) {
       `;
     }
     searchResults.innerHTML = resultsHTML;
+    
   };
 }
 
