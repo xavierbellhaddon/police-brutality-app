@@ -9,6 +9,60 @@ const map = L.map("map", {
 }).setView([39.0, -96.0]);
 const searchResults = document.querySelector(".search-results");
 
+const states = {
+  Alabama: "AL",
+  Alaska: "AK",
+  Arizona: "AZ",
+  Arkansas: "AR",
+  California: "CA",
+  Colorado: "CO",
+  Connecticut: "CT",
+  Delaware: "DE",
+  Florida: "FL",
+  Georgia: "GA",
+  Hawaii: "HI",
+  Idaho: "ID",
+  Illinois: "IL",
+  Indiana: "IN",
+  Iowa: "IA",
+  Kansas: "KS",
+  Kentucky: "KY",
+  Louisiana: "LA",
+  Maine: "ME",
+  Maryland: "MD",
+  Massachusetts: "MA",
+  Michigan: "MI",
+  Minnesota: "MN",
+  Mississippi: "MS",
+  Missouri: "MO",
+  Montana: "MT",
+  Nebraska: "NE",
+  Nevada: "NV",
+  "New Hampshire": "NH",
+  "New Jersey": "NJ",
+  "New Mexico": "NM",
+  "New York": "NY",
+  "North Carolina": "NC",
+  "North Dakota": "ND",
+  Ohio: "OH",
+  Oklahoma: "OK",
+  Oregon: "OR",
+  Pennsylvania: "PA",
+  "Rhode Island": "RI",
+  "South Carolina": "SC",
+  "South Dakota": "SD",
+  Tennessee: "TN",
+  Texas: "TX",
+  Utah: "UT",
+  Vermont: "VT",
+  Virginia: "VA",
+  Washington: "WA",
+  "Washington DC": "DC",
+  "West Virginia": "WV",
+  Wisconsin: "WI",
+  Wyoming: "WY",
+};
+
 const style = {
   color: "white",
   fillColor: "black",
@@ -35,7 +89,7 @@ map.zoomControl.setPosition("bottomright");
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
-    accessToken,
+  accessToken,
   {
     attribution:
       'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -120,16 +174,31 @@ function visualize() {
   };
 }
 
-function handleSearch(searchTerm) {
-  let state = searchTerm.split(" ").join("+");
+function getKeyByValue(object, value) {
+  return Object.keys(object).find((key) => object[key] === value.toUpperCase());
+}
 
-  if (searchTerm.toUpperCase() === "DISTRICT OF COLUMBIA") {
-    state = "Washington DC";
+function handleSearch(searchTerm) {
+  if (
+    !states[searchTerm.toLowerCase().charAt(0).toUpperCase() + searchTerm.toLowerCase().slice(1)] &&
+    !getKeyByValue(states, searchTerm)
+  ) {
+    alert("invalid search");
+  } else if (getKeyByValue(states, searchTerm)) {
+    searchTerm = getKeyByValue(states, searchTerm);
+  }
+
+  if (
+    searchTerm.toUpperCase() === "DISTRICT OF COLUMBIA" ||
+    searchTerm.split(", ").join(" ").toUpperCase() === "WASHINGTON D.C." ||
+    searchTerm.split(", ").join(" ").toUpperCase() === "WASHINGTON DC"
+  ) {
+    searchTerm = "Washington DC";
   }
 
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
-    `${state}`;
+    `${searchTerm}`;
   const req = new XMLHttpRequest();
   searchResults.scrollTop = 0;
   req.open("GET", url);
@@ -173,8 +242,7 @@ function handleSearch(searchTerm) {
 
       resultsHTML += `
       <div class="incident">
-        <h2>${
-          date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+        <h2>${date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
         } &#183 ${location}
         <p>${incident.title}.</p>
         ${evidence}
@@ -196,18 +264,18 @@ exitButton.addEventListener("click", (event) => {
   event.preventDefault();
   exitButton.style.display = "none";
   textInput.value = "";
+  searchResults.innerHTML = "";
   searchResults.scrollTop = 0;
   searchResults.classList.remove("open");
-  searchResults.innerHTML = "";
 });
 
 window.addEventListener("resize", (event) => {
   const width = document.documentElement.clientWidth;
   if (width > 1900) {
-    map.setZoom(5)
+    map.setZoom(5);
   } else if (width > 1200) {
-    map.setZoom(4)
+    map.setZoom(4);
   } else {
-    map.setZoom(3)
+    map.setZoom(3);
   }
 });
