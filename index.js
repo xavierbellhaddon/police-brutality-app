@@ -243,6 +243,10 @@ function handleSearch(searchTerm) {
         location = "Washington, D.C.</h2>";
       }
 
+      if (incident.title[incident.title.length - 1] === ".") {
+        incident.title = incident.title.slice(0, -1);
+      }
+
       resultsHTML += `
       <div class="incident">
         <h2>${
