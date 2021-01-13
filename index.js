@@ -3,11 +3,12 @@ import { CountUp } from "./countUp.min.js";
 const form = document.querySelector("form");
 const exitButton = document.querySelector(".exit-button");
 const textInput = document.querySelector(".text-input");
+const searchResults = document.querySelector(".search-results");
+const error = document.querySelector(".error");
 const map = L.map("map", {
   scrollWheelZoom: false,
   attributionControl: false,
 }).setView([39.0, -96.0]);
-const searchResults = document.querySelector(".search-results");
 
 const states = {
   Alabama: "AL",
@@ -180,19 +181,23 @@ function getKeyByValue(object, value) {
 
 function handleSearch(searchTerm) {
 
+  
   let key = searchTerm.toLowerCase().split(" ")
-
+  
   for (let i = 0; i < key.length; i++) {
     key[i] = key[i][0].toUpperCase() + key[i].substr(1);
-}
-
-key = key.join(" ");
-
+  }
+  
+  key = key.join(" ");
+  
+  exitButton.style.display = "inline";
+  
   if (
     !states[key] &&
     !getKeyByValue(states, searchTerm)
   ) {
-    console.log("invalid search");
+    error.innerHTML = "<small>Please enter a valid search term.</small>"
+    error.style.display = "block";
     return;
   } else if (getKeyByValue(states, searchTerm)) {
     searchTerm = getKeyByValue(states, searchTerm);
@@ -219,10 +224,10 @@ key = key.join(" ");
 
     if (data.length) {
       searchResults.classList.add("open");
-      exitButton.style.display = "inline";
     } else {
       searchResults.classList.remove("open");
-      console.log("no results found")
+      error.innerHTML = "<small>No results found.</small>";
+      error.style.display = "block";
       return;
     }
   
@@ -281,6 +286,7 @@ form.addEventListener("submit", (event) => {
 exitButton.addEventListener("click", (event) => {
   event.preventDefault();
   exitButton.style.display = "none";
+  error.style.display = "none";
   textInput.value = "";
   searchResults.innerHTML = "";
   searchResults.scrollTop = 0;
