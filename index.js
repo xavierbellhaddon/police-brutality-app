@@ -191,7 +191,7 @@ function handleSearch(searchTerm) {
   
   key = key.join(" ");
   
-  exitButton.style.display = "inline";
+  // exitButton.style.display = "inline";
   
   if (
     !states[key] &&
@@ -199,6 +199,7 @@ function handleSearch(searchTerm) {
   ) {
     error.innerHTML = "<small>Please enter a valid search term.</small>"
     error.style.display = "block";
+    exitButton.style.display = "inline";
     return;
   } else if (getKeyByValue(states, searchTerm)) {
     searchTerm = getKeyByValue(states, searchTerm);
@@ -222,6 +223,8 @@ function handleSearch(searchTerm) {
   req.onload = function () {
     searchResults.innerHTML = "";
     const data = JSON.parse(req.responseText).data;
+
+    exitButton.style.display = "inline";
 
     if (data.length) {
       searchResults.classList.add("open");
