@@ -200,9 +200,13 @@ function handleSearch(searchTerm) {
     error.innerHTML = "<small>Please enter a valid search term.</small>"
     error.style.display = "block";
     exitButton.style.display = "inline";
+    searchResults.classList.remove("open");
+    searchResults.innerHTML = "";
+    searchResults.scrollTop = 0;
     return;
   } else if (getKeyByValue(states, searchTerm)) {
     searchTerm = getKeyByValue(states, searchTerm);
+    error.style.display = "none";
   }
 
   if (
@@ -228,6 +232,7 @@ function handleSearch(searchTerm) {
 
     if (data.length) {
       searchResults.classList.add("open");
+      error.style.display = "none";
     } else {
       searchResults.classList.remove("open");
       error.innerHTML = "<small>No results found.</small>";
