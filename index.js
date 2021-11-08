@@ -148,6 +148,8 @@ geojson = L.geoJson(statesData, {
   onEachFeature: onEachFeature,
 }).addTo(map);
 
+const loaderContainer = document.querySelector(".loader-container");
+
 function visualize() {
   let url = "https://api.846policebrutality.com/api/incidents";
   const req = new XMLHttpRequest();
@@ -159,7 +161,7 @@ function visualize() {
     const loaderContainer = document.querySelector(".loader-container");
 
     loaderContainer.style.opacity = '0';
-    loaderContainer.addEventListener('transitionend', () => loaderContainer.remove());
+    loaderContainer.addEventListener('transitionend', () => loaderContainer.style.display = "none");
 
     new CountUp("totalCounter", total).start();
 
@@ -179,6 +181,7 @@ function visualize() {
     }
   };
 }
+
 
 function getKeyByValue(object, value) {
   return Object.keys(object).find((key) => object[key] === value.toUpperCase());
@@ -218,6 +221,23 @@ function handleSearch(searchTerm) {
   ) {
     searchTerm = "Washington DC";
   }
+  
+  const mediaQuery = window.matchMedia("(max-width: 830px)");
+  
+  loaderContainer.style.display = "flex";
+  
+  if (mediaQuery.matches) {
+    loaderContainer.style.position = "absolute";
+    loaderContainer.style.marginTop = "450px";
+    loaderContainer.style.height = "100%";
+    loaderContainer.style.width = "100%";
+    loaderContainer.style.opacity = 0.5;
+  } else {
+    loaderContainer.style.marginTop = 0;
+    loaderContainer.style.height = "100vh";
+    loaderContainer.style.width = "500px";
+    loaderContainer.style.opacity = 0.5;
+    }
 
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
@@ -229,6 +249,8 @@ function handleSearch(searchTerm) {
   req.onload = function () {
     searchResults.innerHTML = "";
     const data = JSON.parse(req.responseText).data;
+
+    loaderContainer.style.opacity = 0;
 
     exitButton.style.display = "inline";
 
