@@ -120,7 +120,9 @@ ul {
 }
 
 .search {
-  height: 10vh;
+  /* height: 10vh; */
+  padding: 0 1rem;
+  height: 100px;
   width: 500px;
   align-items: center;
   display: flex;
@@ -164,7 +166,7 @@ ul {
 .search-results.open { 
   position: absolute;
   left: 0;
-  top: 10vh;
+  top: 100px;
   height: 90vh;
   overflow-y: auto;
   width: 500px;
@@ -241,7 +243,6 @@ ul {
   
   .search {
     margin-top: 450px;
-    /* ^^^??? */
     height: 70px;
     width: 100%;
   }
