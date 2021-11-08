@@ -156,6 +156,10 @@ function visualize() {
   req.onload = function () {
     const data = JSON.parse(req.responseText).data;
     const total = data.length;
+    const loaderContainer = document.querySelector(".loader-container");
+
+    loaderContainer.style.opacity = '0';
+    loaderContainer.addEventListener('transitionend', () => loaderContainer.remove());
 
     new CountUp("totalCounter", total).start();
 
@@ -190,8 +194,6 @@ function handleSearch(searchTerm) {
   }
   
   key = key.join(" ");
-  
-  // exitButton.style.display = "inline";
   
   if (
     !states[key] &&
