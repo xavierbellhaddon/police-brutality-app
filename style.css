@@ -112,6 +112,7 @@ ul {
 
 .incident-number h1 {
   color: red;
+  font-family: "Orbitron", sans-serif;
 }
 
 .fa-search,
