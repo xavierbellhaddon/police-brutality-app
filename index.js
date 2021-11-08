@@ -182,13 +182,21 @@ function visualize() {
   };
 }
 
-
 function getKeyByValue(object, value) {
   return Object.keys(object).find((key) => object[key] === value.toUpperCase());
 }
 
-function handleSearch(searchTerm) {
+function searchLoaderMediaQuery (media) {
+  if (media.matches) {
+    loaderContainer.classList.add("search-loader-container-min");
+    loaderContainer.classList.remove("search-loader-container-max");
+  } else {
+    loaderContainer.classList.add("search-loader-container-max");
+    loaderContainer.classList.remove("search-loader-container-min");
+    }
+}
 
+function handleSearch(searchTerm) {
   
   let key = searchTerm.toLowerCase().split(" ")
   
@@ -222,22 +230,13 @@ function handleSearch(searchTerm) {
     searchTerm = "Washington DC";
   }
   
-  const mediaQuery = window.matchMedia("(max-width: 830px)");
+  const media = window.matchMedia("(max-width: 830px)");
   
   loaderContainer.style.display = "flex";
-  
-  if (mediaQuery.matches) {
-    loaderContainer.style.position = "absolute";
-    loaderContainer.style.marginTop = "450px";
-    loaderContainer.style.height = "100%";
-    loaderContainer.style.width = "100%";
-    loaderContainer.style.opacity = 0.5;
-  } else {
-    loaderContainer.style.marginTop = 0;
-    loaderContainer.style.height = "100vh";
-    loaderContainer.style.width = "500px";
-    loaderContainer.style.opacity = 0.5;
-    }
+  loaderContainer.style.opacity = 0.5;
+
+  searchLoaderMediaQuery(media);
+  media.addEventListener("change", searchLoaderMediaQuery);
 
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
