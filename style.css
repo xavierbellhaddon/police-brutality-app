@@ -192,7 +192,7 @@ ul {
   position: absolute;
   left: 0;
   top: 70px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 170px);
   overflow-y: auto;
   width: 500px;
   border-top: 1px solid #5e5e5e;
