@@ -191,7 +191,7 @@ ul {
 .search-results.open { 
   position: absolute;
   left: 0;
-  top: 100px;
+  top: 70px;
   height: calc(100vh - 100px);
   overflow-y: auto;
   width: 500px;
