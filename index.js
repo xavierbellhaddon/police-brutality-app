@@ -214,7 +214,7 @@ function handleSearch(searchTerm) {
     error.innerHTML = "<small>Please enter a valid search term.</small>";
     error.style.display = "block";
     error.classList.add("animated-error");
-    setTimeout(() => error.classList.remove("animated-error"), 2000);
+    setTimeout(() => error.classList.remove("animated-error"), 500);
     exitButton.style.display = "inline";
     searchResults.classList.remove("open");
     searchResults.innerHTML = "";
@@ -264,7 +264,7 @@ function handleSearch(searchTerm) {
       error.innerHTML = "<small>No results found.</small>";
       error.style.display = "block";
       error.classList.add("animated-error");
-      setTimeout(() => error.classList.remove("animated-error"), 2000);
+      setTimeout(() => error.classList.remove("animated-error"), 500);
       return;
     }
 
