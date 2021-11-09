@@ -95,10 +95,6 @@ ul {
   display: none;
 }
 
-.animated-error {
-  animation: 2s shake alternate;
-}
-
 @keyframes shake {
   0% {transform: translateX(-10px)}
   5% {transform: translateX(10px)}
