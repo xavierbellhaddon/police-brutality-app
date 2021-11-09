@@ -11,58 +11,58 @@ const map = L.map("map", {
 }).setView([39.0, -96.0]);
 
 const states = {
-  alabama: "AL",
-  alaska: "AK",
-  arizona: "AZ",
-  arkansas: "AR",
-  california: "CA",
-  colorado: "CO",
-  connecticut: "CT",
-  delaware: "DE",
-  florida: "FL",
-  georgia: "GA",
-  hawaii: "HI",
-  idaho: "ID",
-  illinois: "IL",
-  indiana: "IN",
-  iowa: "IA",
-  kansas: "KS",
-  kentucky: "KY",
-  louisiana: "LA",
-  maine: "ME",
-  maryland: "MD",
-  massachusetts: "MA",
-  michigan: "MI",
-  minnesota: "MN",
-  mississippi: "MS",
-  missouri: "MO",
-  montana: "MT",
-  nebraska: "NE",
-  nevada: "NV",
-  "new hampshire": "NH",
-  "new jersey": "NJ",
-  "new mexico": "NM",
-  "new york": "NY",
-  "North carolina": "NC",
-  "north dakota": "ND",
-  ohio: "OH",
-  oklahoma: "OK",
-  oregon: "OR",
-  pennsylvania: "PA",
-  "puerto rico": "PR",
-  "rhode island": "RI",
-  "south carolina": "SC",
-  "south dakota": "SD",
-  tennessee: "TN",
-  texas: "TX",
-  utah: "UT",
-  vermont: "VT",
-  virginia: "VA",
-  washington: "WA",
-  "washington dc": "DC",
-  "west virginia": "WV",
-  wisconsin: "WI",
-  wyoming: "WY",
+  "ALABAMA": "AL",
+  "ALASKA": "AK",
+  "ARIZONA": "AZ",
+  "ARKANSAS": "AR",
+  "CALIFORNIA": "CA",
+  "COLORADO": "CO",
+  "CONNECTICUT": "CT",
+  "DELAWARE": "DE",
+  "FLORIDA": "FL",
+  "GEORGIA": "GA",
+  "HAWAII": "HI",
+  "IDAHO": "ID",
+  "ILLINOIS": "IL",
+  "INDIANA": "IN",
+  "IOWA": "IA",
+  "KANSAS": "KS",
+  "KENTUCKY": "KY",
+  "LOUISIANA": "LA",
+  "MAINE": "ME",
+  "MARYLAND": "MD",
+  "MASSACHUSETTS": "MA",
+  "MICHIGAN": "MI",
+  "MINNESOTA": "MN",
+  "MISSISSIPPI": "MS",
+  "MISSOURI": "MO",
+  "MONTANA": "MT",
+  "NEBRASKA": "NE",
+  "NEVADA": "NV",
+  "NEW HAMPSHIRE": "NH",
+  "NEW JERSEY": "NJ",
+  "NEW MEXICO": "NM",
+  "NEW YORK": "NY",
+  "NORTH CAROLINA": "NC",
+  "NORTH DAKOTA": "ND",
+  "OHIO": "OH",
+  "OKLAHOMA": "OK",
+  "OREGON": "OR",
+  "PENNSYLVANIA": "PA",
+  "PUERTO RICO": "PR",
+  "RHODE ISLAND": "RI",
+  "SOUTH CAROLINA": "SC",
+  "SOUTH DAKOTA": "SD",
+  "TENNESSEE": "TN",
+  "TEXAS": "TX",
+  "UTAH": "UT",
+  "VERMONT": "VT",
+  "VIRGINIA": "VA",
+  "WASHINGTON": "WA",
+  "WASHINGTON DC": "DC",
+  "WEST VIRGINIA": "WV",
+  "WISCONSIN": "WI",
+  "WYOMING": "WY"
 };
 
 const style = {
@@ -209,22 +209,22 @@ function showSearchError(admonishment) {
 }
 
 function handleSearch(searchTerm) {
-  let key = searchTerm.toLowerCase()
+  searchTerm = searchTerm
+    .replace(/\s\s/g, ' ')
+    .replace(/[^a-zA-Z\s]/g, '')
+    .toUpperCase()
 
-  if (!states[key] && !getKeyByValue(states, searchTerm)) {
+    if (searchTerm === 'DISTRICT OF COLUMBIA') {
+      searchTerm = 'WASHINGTON DC'
+    }
+  
+
+  if (!states[searchTerm] && !getKeyByValue(states, searchTerm)) {
     showSearchError('Please enter a valid search term.')
     return;
   } else if (getKeyByValue(states, searchTerm)) {
     searchTerm = getKeyByValue(states, searchTerm);
     error.style.display = "none";
-  }
-
-  if (
-    searchTerm.toUpperCase() === "DISTRICT OF COLUMBIA" ||
-    searchTerm.split(", ").join(" ").toUpperCase() === "WASHINGTON D.C." ||
-    searchTerm.split(", ").join(" ").toUpperCase() === "WASHINGTON DC"
-  ) {
-    searchTerm = "Washington DC";
   }
 
   const media = window.matchMedia("(max-width: 830px)");
