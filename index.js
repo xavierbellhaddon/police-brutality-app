@@ -160,8 +160,11 @@ function visualize() {
     const total = data.length;
     const loaderContainer = document.querySelector(".loader-container");
 
-    loaderContainer.style.opacity = '0';
-    loaderContainer.addEventListener('transitionend', () => loaderContainer.style.display = "none");
+    loaderContainer.style.opacity = "0";
+    loaderContainer.addEventListener(
+      "transitionend",
+      () => (loaderContainer.style.display = "none")
+    );
 
     new CountUp("totalCounter", total).start();
 
@@ -186,31 +189,29 @@ function getKeyByValue(object, value) {
   return Object.keys(object).find((key) => object[key] === value.toUpperCase());
 }
 
-function searchLoaderMediaQuery (media) {
+function searchLoaderMediaQuery(media) {
   if (media.matches) {
     loaderContainer.classList.add("search-loader-container-min");
     loaderContainer.classList.remove("search-loader-container-max");
   } else {
     loaderContainer.classList.add("search-loader-container-max");
     loaderContainer.classList.remove("search-loader-container-min");
-    }
+  }
 }
 
 function handleSearch(searchTerm) {
-  
-  let key = searchTerm.toLowerCase().split(" ")
-  
+  let key = "";
+
+  key = searchTerm.toLowerCase().split(" ");
+
   for (let i = 0; i < key.length; i++) {
-    key[i] = key[i][0].toUpperCase() + key[i].substr(1);
+    key[i] = key[i].charAt(0).toUpperCase() + key[i].substr(1);
   }
-  
+
   key = key.join(" ");
-  
-  if (
-    !states[key] &&
-    !getKeyByValue(states, searchTerm)
-  ) {
-    error.innerHTML = "<small>Please enter a valid search term.</small>"
+
+  if (!states[key] && !getKeyByValue(states, searchTerm)) {
+    error.innerHTML = "<small>Please enter a valid search term.</small>";
     error.style.display = "block";
     exitButton.style.display = "inline";
     searchResults.classList.remove("open");
@@ -229,9 +230,9 @@ function handleSearch(searchTerm) {
   ) {
     searchTerm = "Washington DC";
   }
-  
+
   const media = window.matchMedia("(max-width: 830px)");
-  
+
   loaderContainer.style.display = "flex";
   loaderContainer.style.opacity = 0.5;
 
@@ -262,7 +263,7 @@ function handleSearch(searchTerm) {
       error.style.display = "block";
       return;
     }
-  
+
     let resultsHTML = "";
 
     for (let i = 0; i < data.length; i++) {
@@ -304,7 +305,6 @@ function handleSearch(searchTerm) {
       `;
     }
     searchResults.innerHTML = resultsHTML;
-    
   };
 }
 
