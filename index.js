@@ -199,6 +199,15 @@ function searchLoaderMediaQuery(media) {
   }
 }
 
+function showSearchError(admonishment) {
+  error.innerHTML = `<small>${admonishment}</small>`;
+  error.style.display = "block";
+  exitButton.style.display = "inline";
+  searchResults.classList.remove("open");
+  searchResults.innerHTML = "";
+  searchResults.scrollTop = 0;  
+}
+
 function handleSearch(searchTerm) {
   let key = "";
 
@@ -211,12 +220,7 @@ function handleSearch(searchTerm) {
   key = key.join(" ");
 
   if (!states[key] && !getKeyByValue(states, searchTerm)) {
-    error.innerHTML = "<small>Please enter a valid search term.</small>";
-    error.style.display = "block";
-    exitButton.style.display = "inline";
-    searchResults.classList.remove("open");
-    searchResults.innerHTML = "";
-    searchResults.scrollTop = 0;
+    showSearchError('Please enter a valid search term.')
     return;
   } else if (getKeyByValue(states, searchTerm)) {
     searchTerm = getKeyByValue(states, searchTerm);
@@ -258,9 +262,7 @@ function handleSearch(searchTerm) {
       searchResults.classList.add("open");
       error.style.display = "none";
     } else {
-      searchResults.classList.remove("open");
-      error.innerHTML = "<small>No results found.</small>";
-      error.style.display = "block";
+      showSearchError("No results found.");
       return;
     }
 
