@@ -227,13 +227,8 @@ function handleSearch(searchTerm) {
     error.style.display = "none";
   }
 
-  const media = window.matchMedia("(max-width: 830px)");
-
   loaderContainer.style.display = "flex";
   loaderContainer.style.opacity = 0.5;
-
-  searchLoaderMediaQuery(media);
-  media.addEventListener("change", searchLoaderMediaQuery);
 
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
@@ -301,6 +296,11 @@ function handleSearch(searchTerm) {
     searchResults.innerHTML = resultsHTML;
   };
 }
+
+const media = window.matchMedia("(max-width: 830px)");
+
+searchLoaderMediaQuery(media);
+media.addEventListener("change", searchLoaderMediaQuery);
 
 visualize();
 
