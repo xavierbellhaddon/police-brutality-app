@@ -185,7 +185,7 @@ function visualize() {
   };
 }
 
-function getKeyByValue(object, value) {
+function getStateByAbbreviation(object, value) {
   return Object.keys(object).find((key) => object[key] === value.toUpperCase());
 }
 
@@ -219,11 +219,11 @@ function handleSearch(searchTerm) {
     }
   
 
-  if (!states[searchTerm] && !getKeyByValue(states, searchTerm)) {
+  if (!states[searchTerm] && !getStateByAbbreviation(states, searchTerm)) {
     showSearchError('Please enter a valid search term.')
     return;
-  } else if (getKeyByValue(states, searchTerm)) {
-    searchTerm = getKeyByValue(states, searchTerm);
+  } else if (getStateByAbbreviation(states, searchTerm)) {
+    searchTerm = getStateByAbbreviation(states, searchTerm);
     error.style.display = "none";
   }
 
