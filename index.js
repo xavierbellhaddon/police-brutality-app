@@ -11,58 +11,58 @@ const map = L.map("map", {
 }).setView([39.0, -96.0]);
 
 const states = {
-  "ALABAMA": "AL",
-  "ALASKA": "AK",
-  "ARIZONA": "AZ",
-  "ARKANSAS": "AR",
-  "CALIFORNIA": "CA",
-  "COLORADO": "CO",
-  "CONNECTICUT": "CT",
-  "DELAWARE": "DE",
-  "FLORIDA": "FL",
-  "GEORGIA": "GA",
-  "HAWAII": "HI",
-  "IDAHO": "ID",
-  "ILLINOIS": "IL",
-  "INDIANA": "IN",
-  "IOWA": "IA",
-  "KANSAS": "KS",
-  "KENTUCKY": "KY",
-  "LOUISIANA": "LA",
-  "MAINE": "ME",
-  "MARYLAND": "MD",
-  "MASSACHUSETTS": "MA",
-  "MICHIGAN": "MI",
-  "MINNESOTA": "MN",
-  "MISSISSIPPI": "MS",
-  "MISSOURI": "MO",
-  "MONTANA": "MT",
-  "NEBRASKA": "NE",
-  "NEVADA": "NV",
+  ALABAMA: "AL",
+  ALASKA: "AK",
+  ARIZONA: "AZ",
+  ARKANSAS: "AR",
+  CALIFORNIA: "CA",
+  COLORADO: "CO",
+  CONNECTICUT: "CT",
+  DELAWARE: "DE",
+  FLORIDA: "FL",
+  GEORGIA: "GA",
+  HAWAII: "HI",
+  IDAHO: "ID",
+  ILLINOIS: "IL",
+  INDIANA: "IN",
+  IOWA: "IA",
+  KANSAS: "KS",
+  KENTUCKY: "KY",
+  LOUISIANA: "LA",
+  MAINE: "ME",
+  MARYLAND: "MD",
+  MASSACHUSETTS: "MA",
+  MICHIGAN: "MI",
+  MINNESOTA: "MN",
+  MISSISSIPPI: "MS",
+  MISSOURI: "MO",
+  MONTANA: "MT",
+  NEBRASKA: "NE",
+  NEVADA: "NV",
   "NEW HAMPSHIRE": "NH",
   "NEW JERSEY": "NJ",
   "NEW MEXICO": "NM",
   "NEW YORK": "NY",
   "NORTH CAROLINA": "NC",
   "NORTH DAKOTA": "ND",
-  "OHIO": "OH",
-  "OKLAHOMA": "OK",
-  "OREGON": "OR",
-  "PENNSYLVANIA": "PA",
+  OHIO: "OH",
+  OKLAHOMA: "OK",
+  OREGON: "OR",
+  PENNSYLVANIA: "PA",
   "PUERTO RICO": "PR",
   "RHODE ISLAND": "RI",
   "SOUTH CAROLINA": "SC",
   "SOUTH DAKOTA": "SD",
-  "TENNESSEE": "TN",
-  "TEXAS": "TX",
-  "UTAH": "UT",
-  "VERMONT": "VT",
-  "VIRGINIA": "VA",
-  "WASHINGTON": "WA",
+  TENNESSEE: "TN",
+  TEXAS: "TX",
+  UTAH: "UT",
+  VERMONT: "VT",
+  VIRGINIA: "VA",
+  WASHINGTON: "WA",
   "WASHINGTON DC": "DC",
   "WEST VIRGINIA": "WV",
-  "WISCONSIN": "WI",
-  "WYOMING": "WY"
+  WISCONSIN: "WI",
+  WYOMING: "WY",
 };
 
 const style = {
@@ -189,38 +189,27 @@ function getStateByAbbreviation(object, value) {
   return Object.keys(object).find((key) => object[key] === value.toUpperCase());
 }
 
-function searchLoaderMediaQuery(media) {
-  if (media.matches) {
-    loaderContainer.classList.add("search-loader-container-min");
-    loaderContainer.classList.remove("search-loader-container-max");
-  } else {
-    loaderContainer.classList.add("search-loader-container-max");
-    loaderContainer.classList.remove("search-loader-container-min");
-  }
-}
-
 function showSearchError(admonishment) {
   error.innerHTML = `<small>${admonishment}</small>`;
   error.style.display = "block";
   exitButton.style.display = "inline";
   searchResults.classList.remove("open");
   searchResults.innerHTML = "";
-  searchResults.scrollTop = 0;  
+  searchResults.scrollTop = 0;
 }
 
 function handleSearch(searchTerm) {
   searchTerm = searchTerm
-    .replace(/\s\s+/g, ' ')
-    .replace(/[^a-zA-Z\s]/g, '')
-    .toUpperCase()
+    .replace(/\s\s+/g, " ")
+    .replace(/[^a-zA-Z\s]/g, "")
+    .toUpperCase();
 
-    if (searchTerm === 'DISTRICT OF COLUMBIA') {
-      searchTerm = 'WASHINGTON DC'
-    }
-  
+  if (searchTerm === "DISTRICT OF COLUMBIA") {
+    searchTerm = "WASHINGTON DC";
+  }
 
   if (!states[searchTerm] && !getStateByAbbreviation(states, searchTerm)) {
-    showSearchError('Please enter a valid search term.')
+    showSearchError("Please enter a valid search term.");
     return;
   } else if (getStateByAbbreviation(states, searchTerm)) {
     searchTerm = getStateByAbbreviation(states, searchTerm);
@@ -296,11 +285,6 @@ function handleSearch(searchTerm) {
     searchResults.innerHTML = resultsHTML;
   };
 }
-
-const media = window.matchMedia("(max-width: 830px)");
-
-searchLoaderMediaQuery(media);
-media.addEventListener("change", searchLoaderMediaQuery);
 
 visualize();
 
