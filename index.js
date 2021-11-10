@@ -210,7 +210,7 @@ function showSearchError(admonishment) {
 
 function handleSearch(searchTerm) {
   searchTerm = searchTerm
-    .replace(/\s\s/g, ' ')
+    .replace(/\s\s+/g, ' ')
     .replace(/[^a-zA-Z\s]/g, '')
     .toUpperCase()
 
