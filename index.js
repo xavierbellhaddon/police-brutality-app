@@ -189,6 +189,17 @@ function getStateByAbbreviation(object, value) {
   return Object.keys(object).find((key) => object[key] === value.toUpperCase());
 }
 
+function searchLoaderMediaQuery(media) {
+  if (media.matches) {
+    loaderContainer.classList.add("search-loader-container-min");
+    loaderContainer.classList.remove("search-loader-container-max");
+  } else {
+    loaderContainer.classList.add("search-loader-container-max");
+    loaderContainer.classList.remove("search-loader-container-min");
+  }
+}
+
+
 function showSearchError(admonishment) {
   error.innerHTML = `<small>${admonishment}</small>`;
   error.style.display = "block";
@@ -287,6 +298,11 @@ function handleSearch(searchTerm) {
 }
 
 visualize();
+
+const media = window.matchMedia("(max-width: 830px)");
+
+searchLoaderMediaQuery(media);
+media.addEventListener("change", searchLoaderMediaQuery);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
