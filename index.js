@@ -188,6 +188,7 @@ function visualize() {
 }
 
 function getStateByAbbreviation(object, value) {
+  value = value.replace(/\s+/g, "");
   return Object.keys(object).find((key) => object[key] === value.toUpperCase());
 }
 
