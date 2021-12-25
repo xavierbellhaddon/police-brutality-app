@@ -220,7 +220,8 @@ function handleSearch(searchTerm) {
   }
 
   loaderContainer.style.display = "flex";
-  loaderContainer.style.opacity = 0.5;
+  loaderContainer.style.opacity = 1;
+  loaderContainer.style.backgroundColor = "rgb(255, 255, 255, 0.5)";
 
   let url =
     "https://api.846policebrutality.com/api/incidents?include=evidence&filter[state]=" +
